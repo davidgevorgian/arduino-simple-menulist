@@ -1,11 +1,11 @@
 Simple menu list in PROGMEM
 =========
-Based on #define helper for create menu list in PROGMEM. See example.
+*Based on #define helper for create menu list in PROGMEM. See example.*
 
 
-##Menu list maker:
+**Menu list maker:**
 
-###XM_Make_items(name, number items, items text,item0,item2,.....itemx);
+*XM_Make_items(name, number items, items text,item0,item2,.....itemx);*
 
 name - this list name
 number items - number items in list
