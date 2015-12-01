@@ -24,7 +24,7 @@ typedef struct{
 }XM_Menu_Item;
 
 //list = list items ex: "Line1\0Item1\0Item2\0"
-//make_items list name, count items, list items text, type, (ptr to child, type, ptr to child, type, ...)
+//make_items list name, count items, list items text, (type, ptr to child, type, ptr to child, ...)
 #define XM_Make_items(name, count, list, ...) \
   const XM_Menu_Item __xm_##name[] PROGMEM = {__VA_ARGS__};\
   const char __xm_ls_##name[] PROGMEM = {list};\
