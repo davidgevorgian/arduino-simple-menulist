@@ -7,13 +7,11 @@ Simple menu list in PROGMEM
 
 *XM_Make_items(name, number items, items text,item0,item2,.....itemx);*
 
-name - this list name
-number items - number items in list
-items text - the zero terminated list. ex:. "Text1\0Text2\0Line3\0"
-item[x] - user any type 0..255, ptr to child (PGM_P). ex.: (PGM_P)&parameter1 - pointer to var parameter1, (PGM_P)list3 - 
-
-pointer to a child menu list by the name (list3)
-
+**name** - this list name
+**number items** - number items in list
+**items text** - the zero terminated list. ex:. "Text1\0Text2\0Line3\0"
+**item[x]** - user any type 0..255, ptr to child (PGM_P). ex.: (PGM_P)&parameter1 - pointer to var parameter1, (PGM_P)list3 - pointer to a child menu list by the name (list3)
+==
 Internal TYPES:
 
 XM_Menu_Head - list header.
