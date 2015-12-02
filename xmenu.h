@@ -8,7 +8,7 @@
 #define pgm_read_byte(address) __LPM((uint16_t)(address))
 /*
 for 32bit 
-#define pgm_get_ptr(address) (char *)__ELPM_word((uint32_t)(address))
+#define pgm_read_ptr(address) (char *)__ELPM_word((uint32_t)(address))
 #define pgm_read_byte(address) __ELPM((uint32_t)(address_long))
 */
 
