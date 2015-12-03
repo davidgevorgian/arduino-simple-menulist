@@ -38,7 +38,7 @@ Helper Xmenu Ver 1.0
 - **name** - this 'Menu list' name
 - **number items** - number items in this list
 - **items text** - zero terminated 'Items text'. *ex.: "Text1\0Text2\0Line3\0"*
-- **item[x]** - 'Items list'. *ex.: {Item, (PGM_P)Mlist2} - pointer to a child sub menu list Mlist2 or {Int, (PGM_P)&parameter1} - pointer to integer parameter1 or {Func, (PGM_P)&function2} - pointer to function2 or any user define*
+- **item[0..N]** - 'Items list'. *ex.: {Item, (PGM_P)Mlist2} - pointer to a child sub menu list Mlist2 or {Int, (PGM_P)&parameter1} - pointer to integer parameter1 or {Func, (PGM_P)&function2} - pointer to function2 or any user define*
 
 #### Internal TYPES:
 
