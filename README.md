@@ -31,7 +31,7 @@ Ver 1.0
 ---
 #### Menu list maker:
 
-*XM_Make_items(name, number items, items text,item0,item2,.....itemx);*
+*XM_Make_items(name, number items, items text, item 0, item 1, ..., item N);*
 
 - **name** - this 'Menu list' name
 - **number items** - number items in list
