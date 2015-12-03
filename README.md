@@ -1,4 +1,4 @@
-# Simple menu list in PROGMEM
+# Simple multilevel menu list in FLASH (PROGMEM)
 Ver 1.0
 
 ---
