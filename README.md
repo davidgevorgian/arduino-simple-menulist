@@ -1,4 +1,6 @@
-# Simple multilevel menu list in FLASH (PROGMEM)
+## Arduino multilevel menu list in FLASH (PROGMEM)
+*Simple and minimum flash memory*
+
 Ver 1.0
 
 ---
