@@ -42,11 +42,11 @@ Helper Xmenu Ver 1.0
 
 #### Internal TYPES:
 
-**XM_Menu_Head** - list header.
+**XM_Menu_Head** - 'Menu list' header.
 - [.count] - count items in 'Menu list'
 - [.list] - PGM_P pointer to 'Items text'
 
-**XM_Menu_Item** - item structure
+**XM_Menu_Item** - 'Menu list' item structure
 - [.type] - user define, any type [0..255]
 - [.child] - PGM_P pointer to (sub level 'Menu list', variable, function, ...)
 
