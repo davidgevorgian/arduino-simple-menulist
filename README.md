@@ -36,37 +36,43 @@ Helper Xmenu Ver 1.0
 *XM_Make_items(name, number items, items text, item 0, item 1, ..., item N);*
 
 - **name** - this 'Menu list' name
-- **number items** - number items in list
+- **number items** - number items in this list
 - **items text** - zero terminated 'Items text'. *ex.: "Text1\0Text2\0Line3\0"*
-- **item[x]** - 'Items list'. *ex.: {Item, (PGM_P)Mlist2} - pointer to child menu Mlist2 or {Int, (PGM_P)&parameter1} - pointer to integer parameter1 or {Func, (PGM_P)&function2} - pointer to function2 or any user define*
+- **item[x]** - 'Items list'. *ex.: {Item, (PGM_P)Mlist2} - pointer to a child sub menu list Mlist2 or {Int, (PGM_P)&parameter1} - pointer to integer parameter1 or {Func, (PGM_P)&function2} - pointer to function2 or any user define*
 
 #### Internal TYPES:
 
 **XM_Menu_Head** - list header.
-- read [.count] - count items in list
-- read [.list] - PGM_P pointer to list in PROGMEM
+- [.count] - count items in 'Menu list'
+- [.list] - PGM_P pointer to 'Items text'
 
 **XM_Menu_Item** - item structure
-- read [.type] - user define type [0..255]
-- read [.child] - PGM_P pointer to child (next level list items, variable, function, ...)
+- [.type] - user define, any type [0..255]
+- [.child] - PGM_P pointer to (sub level 'Menu list', variable, function, ...)
 
 #### Functions:
 
-**XM_Getitem(&item, list, uint8_t nitem)** - Read item [nitem] to [item] from [list].
-- **nitem** - 0..255
-- **item** - XM_Menu_Item
-- **list** - list menu name (PGM_P)
+**XM_Getitem(&item, list, uint8_t nitem)** - Read item from 'Menu list'.
+- **nitem** - item number 0..255
+- **list** - 'Menu list' name (PGM_P)
+
+return:
+- **item** - see XM_Menu_Item structure
 ```
-XM_Getitem(&curitem,(PGM_P)mainmenu,1) - read second item to "curitem" from "mainmenu"*
+XM_Getitem(&curitem,(PGM_P)mainmenu,1) // read second item from "mainmenu" and return to "curitem"
 ```
 
-**XM_Gethead(&head, list)** - Read list header from [list] menu list to [head]
-- **list** - list menu name (PGM_P)
-- **head** - XM_Menu_Head
+**XM_Gethead(&head, list)** - Read 'Menu list' header
+- **list** - 'Menu list' name (PGM_P)
+
+return:
+- **head** - see XM_Menu_Head structure
 ```
-XM_Gethead(&menuhead,(PGM_P)mainmenu)
+XM_Gethead(&menuhead,(PGM_P)mainmenu) // read header from "mainmenu" and return to "menuhead"
 ```
-**XM_Readlistitem(buffer, list, numitem)** - Read [numitem] text to [buffer] from items text [list]
-- **buffer** - zero terminated string
-- **list** - (PGM_P) of items text. Can read from menu header [.list]
+**XM_Readlistitem(buffer, list, numitem)** - Read text from 'Items text'
+- **list** - (PGM_P) Pointer to 'Items text'. *User can get this pointer from menu header [.list]*
 - **numitem** - item number 0..254
+
+return:
+- **buffer** - Item text. Zero terminated string
