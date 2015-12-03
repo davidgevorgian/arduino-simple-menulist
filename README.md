@@ -3,6 +3,8 @@ Ver 1.0
 
 ---
 ### Structure in FLASH Memory
+*Menu list*
+
 **Header:**
 - [Byte] Items count
 - [PGM_P] Pointer to Items text
@@ -19,12 +21,12 @@ Ver 1.0
 
 **Items list:**
 - [Byte] Item 0 type (any user type)
-- [PGM_P] Pointer to (child "Menu List") or (Variable) or ...
+- [PGM_P] Pointer to (child "*Menu List*") or (Variable) or ...
 - [Byte] Item 1 type (any user type)
-- [PGM_P] Pointer to (child "Menu List") or (Variable) or ...
+- [PGM_P] Pointer to (child "*Menu List*") or (Variable) or ...
 - ...
 - [Byte] Item N type (any user type)
-- [PGM_P] Pointer to (child "Menu List") or (Variable) or ...
+- [PGM_P] Pointer to (child "*Menu List*") or (Variable) or ...
 
 ---
 #### Menu list maker:
