@@ -1,7 +1,7 @@
 ## Arduino multilevel menu list in FLASH (PROGMEM)
-*Simple and minimum flash memory*
+*Simple, minimum flash memory and NO RAM*
 
-Ver 1.0
+Helper Xmenu Ver 1.0
 
 ---
 ### Structure in FLASH Memory
