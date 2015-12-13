@@ -13,7 +13,7 @@ Helper Xmenu Ver 1.0
 *Menu list*
 
 **Header:**
-- [Byte] Items count
+- [Byte] Number Items in Menu list
 - [PGM_P] Pointer to Items text
 - [PGM_P] Pointer to Items list
 
