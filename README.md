@@ -19,12 +19,12 @@ Helper Xmenu Ver 1.0
 
 **Items text:**
 - [Chars] Item 0 text
-- [Byte] Terminator (= 0)
+- [Byte] Terminator
 - [Chars] Item 1 text
-- [Byte] Terminator (= 0)
+- [Byte] Terminator
 - ...
 - [Chars] Item N text
-- [Byte] Terminator (= 0)
+- [Byte] Terminator
 
 **Items list:**
 - [Byte] Item 0 type (any user type)
