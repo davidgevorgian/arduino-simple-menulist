@@ -7,55 +7,70 @@
 #define pgm_read_ptr(address) (char *)__LPM_word((uint16_t)(address))
 #define pgm_read_byte(address) __LPM((uint16_t)(address))
 /*
-for 32bit 
-#define pgm_read_ptr(address) (char *)__ELPM_word((uint32_t)(address))
+for 32bit
+#define pgm_get_ptr(address) (char *)__ELPM_word((uint32_t)(address))
 #define pgm_read_byte(address) __ELPM((uint32_t)(address_long))
 */
 
-typedef struct{
-  uint8_t count;  //number items in menu list
-  PGM_P items;    //items pointer
-  PGM_P list;     //items text list pointer
+//========================= Menu Structer =========================
+#define listterminator 1 //terminator for string list
+
+typedef struct {
+  uint8_t count;  //number of items in menu list
+  PGM_P items;    //pointer to items list
+  PGM_P list;     //pointer to items text list
 }XM_Menu_Head;
 
-typedef struct{
-  uint8_t type; //item type (any)
-  PGM_P child;  //child pointer (menu list or variable or function or ...)
+typedef struct {
+  uint8_t type; //item type (any) define by user
+  PGM_P child;  //pointer to child (menu list or variable or function or ...)
 }XM_Menu_Item;
 
-//list = list items ex: "Line1\0Item1\0Item2\0"
+//list = list items example: "Line1\0Item1\0Item2\0"
 //make_items list name, count items, list items text, (type, ptr to child, type, ptr to child, ...)
 #define XM_Make_items(name, count, list, ...) \
   const XM_Menu_Item __xm_##name[] PROGMEM = {__VA_ARGS__};\
   const char __xm_ls_##name[] PROGMEM = {list};\
   const XM_Menu_Head name[] PROGMEM ={count,(PGM_P)__xm_##name,__xm_ls_##name}
+//======================= END Menu Structer =======================
 
-//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-void XM_Getitem(XM_Menu_Item *item, PGM_P root, uint8_t nitem)
+//========================= Menu Utils =========================
+void XM_Getitem(XM_Menu_Item *item, PGM_P menu, uint8_t nitem)
 {
-  root = pgm_read_ptr(root+offsetof(XM_Menu_Head,items))+sizeof(XM_Menu_Item)*nitem;
-  memcpy_P(item,root,sizeof(XM_Menu_Item));
+  menu = pgm_read_ptr(menu + offsetof(XM_Menu_Head, items)) + sizeof(XM_Menu_Item) * nitem;
+  memcpy_P(item, menu, sizeof(XM_Menu_Item));
 }
-//
-void XM_Gethead(XM_Menu_Head *head, PGM_P root)
+
+void XM_Gethead(XM_Menu_Head *head, PGM_P menu)
 {
-  memcpy_P(head,root,sizeof(XM_Menu_Head));
+  memcpy_P(head, menu, sizeof(XM_Menu_Head));
+}
+
+PGM_P XM_Getchildptr(PGM_P menu, uint8_t nitem)
+{
+  menu = pgm_read_ptr(menu + offsetof(XM_Menu_Head, items)) + sizeof(XM_Menu_Item) * nitem;
+  return pgm_read_ptr(menu + offsetof(XM_Menu_Item, child));
+}
+
+PGM_P XM_Getlistptr(PGM_P menu)
+{
+  return pgm_read_ptr(menu+offsetof(XM_Menu_Head, list));
+}
+
+uint8_t XM_Getitemscount(PGM_P menu)
+{
+  return pgm_read_byte(menu+offsetof(XM_Menu_Head, count));
 }
 
 void XM_Readlistitem(char *buffer, PGM_P list, uint8_t item)
 {
   uint8_t dat;
-  do{
-    dat=pgm_read_byte(list++);
-    if (item==0) *buffer++=dat;
-    if (dat==0) item--;
-  }while(item!=255);
-}
-
-uint8_t XM_Getlevelsize(PGM_P root)
-{
-  return pgm_read_byte(root+offsetof(XM_Menu_Head,count));
+  do {
+    dat = pgm_read_byte(list++);
+    if (item == 0) *buffer++ = dat;
+    if ((dat==0)||(dat == listterminator)) item--;
+  } while (item != 255);
+  *(buffer-1)=0;
 }
 
 #endif
