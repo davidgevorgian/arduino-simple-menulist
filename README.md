@@ -94,4 +94,4 @@ return:
 - **menu** - - 'Menu list' name (PGM_P)
 
 return:
--**uint8_t** - count items
+- **uint8_t** - count items
