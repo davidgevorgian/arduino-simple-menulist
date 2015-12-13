@@ -71,8 +71,27 @@ return:
 XM_Gethead(&menuhead,(PGM_P)mainmenu) // read header from "mainmenu" and return to "menuhead"
 ```
 **XM_Readlistitem(buffer, list, numitem)** - Read text from 'Items text'
-- **list** - (PGM_P) Pointer to 'Items text'. *User can get this pointer from menu header [.list]*
-- **numitem** - item number 0..254
+- **list** - (PGM_P) Pointer to 'Items text'. *see: XM_Getlistptr*
+- **numitem** - Item text number [0..254]
 
 return:
 - **buffer** - Item text. Zero terminated string
+
+**PGM_P XM_Getchildptr(PGM_P menu, uint8_t nitem)** - Return pointer to child
+- **menu** - 'Menu list' name (PGM_P)
+- **nitem** - item number 0..255
+
+return:
+- **PGM_P** - pointer to child
+
+**PGM_P XM_Getlistptr(PGM_P menu)** - Return pointer to 'Items text'
+- **menu** - - 'Menu list' name (PGM_P)
+
+return:
+- **PGM_P** - pointer to 'Items text'
+
+**uint8_t XM_Getitemscount(PGM_P menu)** - Return count items in 'Menu list'
+- **menu** - - 'Menu list' name (PGM_P)
+
+return:
+-**uint8_t** - count items
