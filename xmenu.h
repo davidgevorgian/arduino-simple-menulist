@@ -13,7 +13,7 @@ for 32bit
 */
 
 //========================= Menu Structer =========================
-#define listterminator 1 //terminator for string list
+#define listterminator 1 /* terminator for string list */
 
 typedef struct {
   uint8_t count;  //number of items in menu list
